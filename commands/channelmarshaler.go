@@ -34,11 +34,9 @@ func (cr *ChannelMarshaler) Read(p []byte) (int, error) {
 	}
 
 	n, err := cr.reader.Read(p)
-	if err != nil && err != io.EOF {
-		return n, err
-	}
-	if n == 0 {
+	if err == io.EOF {
 		cr.reader = nil
+		err = nil
 	}
-	return n, nil
+	return n, err
 }
