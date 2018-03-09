@@ -2,7 +2,7 @@
 GO_MIN_VERSION = 1.9
 
 # match Go's default GOPATH behaviour
-GOPATH ?= $(HOME)/go
+export GOPATH ?= $(shell $(GOCC) env GOPATH)
 
 # pre-definitions
 GOCC ?= go
