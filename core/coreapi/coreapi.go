@@ -59,6 +59,11 @@ func (api *CoreAPI) Pin() coreiface.PinAPI {
 	return &PinAPI{api, nil}
 }
 
+// PubSub returns the PubSubAPI interface implementation backed by the go-ipfs node
+func (api *CoreAPI) PubSub() coreiface.PubSubAPI {
+	return &PubSubAPI{api, nil}
+}
+
 // ResolveNode resolves the path `p` using Unixfx resolver, gets and returns the
 // resolved Node.
 func (api *CoreAPI) ResolveNode(ctx context.Context, p coreiface.Path) (ipld.Node, error) {

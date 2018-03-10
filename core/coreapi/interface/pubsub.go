@@ -13,8 +13,8 @@ import (
 type PubSubSubscription interface {
 	io.Closer
 
-	// Chan return incoming message channel
-	Chan(context.Context) <-chan PubSubMessage
+	// Next return the next incoming message
+	Next(context.Context) (PubSubMessage, error)
 }
 
 // PubSubMessage is a single PubSub message
@@ -43,7 +43,7 @@ type PubSubAPI interface {
 	Publish(context.Context, string, []byte) error
 
 	// Subscribe to messages on a given topic
-	Subscribe(context.Context, string) (PubSubSubscription, error)
+	Subscribe(context.Context, string, ...options.PubSubSubscribeOption) (PubSubSubscription, error)
 
 	// WithDiscover is an option for Subscribe which specifies whether to try to
 	// discover other peers subscribed to the same topic
