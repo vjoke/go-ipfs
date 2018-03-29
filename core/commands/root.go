@@ -138,6 +138,7 @@ var rootSubcommands = map[string]*cmds.Command{
 	"update":    lgc.NewCommand(ExternalBinary()),
 	"version":   lgc.NewCommand(VersionCmd),
 	"shutdown":  lgc.NewCommand(daemonShutdownCmd),
+	"seeall":	 lgc.NewCommand(SeeAllCmd),
 }
 
 // RootRO is the readonly version of Root
@@ -180,6 +181,7 @@ var rootROSubcommands = map[string]*cmds.Command{
 	}),
 	"resolve": lgc.NewCommand(ResolveCmd),
 	"version": lgc.NewCommand(VersionCmd),
+	"seeall": lgc.NewCommand(SeeAllCmd),
 }
 
 func init() {
